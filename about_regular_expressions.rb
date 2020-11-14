@@ -22,13 +22,13 @@ class AboutRegularExpressions < Neo::Koan
   end
 
   def test_plus_means_one_or_more
-    assert_equal __, "abbcccddddeeeee"[/bc+/]
+    assert_equal 'bccc', "abbcccddddeeeee"[/bc+/]
   end
 
   def test_asterisk_means_zero_or_more
-    assert_equal __, "abbcccddddeeeee"[/ab*/]
-    assert_equal __, "abbcccddddeeeee"[/az*/]
-    assert_equal __, "abbcccddddeeeee"[/z*/]
+    assert_equal 'abb', "abbcccddddeeeee"[/ab*/]
+    assert_equal 'a', "abbcccddddeeeee"[/az*/]
+    assert_equal '', "abbcccddddeeeee"[/z*/]
 
     # THINK ABOUT IT:
     #
@@ -44,14 +44,14 @@ class AboutRegularExpressions < Neo::Koan
   # ------------------------------------------------------------------
 
   def test_the_left_most_match_wins
-    assert_equal __, "abbccc az"[/az*/]
+    assert_equal 'a', "abbccc az"[/az*/]
   end
 
   # ------------------------------------------------------------------
 
   def test_character_classes_give_options_for_a_character
     animals = ["cat", "bat", "rat", "zat"]
-    assert_equal __, animals.select { |a| a[/[cbr]at/] }
+    assert_equal ['cat', 'bat', 'rat'], animals.select { |a| a[/[cbr]at/] }
   end
 
   def test_slash_d_is_a_shortcut_for_a_digit_character_class
